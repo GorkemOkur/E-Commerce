@@ -1,0 +1,8 @@
+.productWrapper{font-size: 2rem;}
+.productWrapper main{display: flex; flex-wrap: wrap; padding: 0 0 0 3rem;}
+.productWrapper main section{ flex-basis: 0; }
+.productWrapper main section.prtrs{ flex-grow: 1; padding: 4rem 0 0 3rem;}
+.productWrapper main section header{ display: flex; justify-content: space-between; text-align: left; font-size: 4rem; font-weight: bold; }
+.productWrapper main section figure{ margin:0; }
+.productWrapper main section.prtrs p{ margin: 5px 0 0 0; text-align: left; }
+.productWrapper main section.prtrs p span{ font-weight: bold; }
