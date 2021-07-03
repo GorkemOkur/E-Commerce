@@ -12,7 +12,7 @@ function ProductCard({id, name, desc, color, type, image, price, isFavorite}){
                         <header>{type}
                             <aside>
                                 {isFavorite ?
-                                    <FavIconSelected key={`iconSelected${id}`} />
+                                    <FavIconSelected key={`iconSelected${id}`} color={color} />
                                 :
                                     null
                                 }

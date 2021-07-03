@@ -5,7 +5,7 @@ header.headerWrapper nav .headerContentwrapper{
     display: flex;
     justify-content: space-between;
 }
-header.headerWrapper nav .headerContentwrapper  a{color: #fff; font-size: 3rem; font-weight: bold; text-decoration: none;line-height: 1;}
+header.headerWrapper nav .headerContentwrapper  a{color: #b5b5b5; font-size: 3rem; font-weight: bold; text-decoration: none;line-height: 1;}
 header.headerWrapper nav .headerContentwrapper  a svg{ vertical-align: top; }
 
 header.headerWrapper nav .headerContentwrapper .headerRight{ padding: 0; margin: 0;}

@@ -2,15 +2,15 @@ import styled from 'styled-components';
 import { FaShoppingCart, FaHeart, FaHome} from "react-icons/fa";
 
 const CartIcon = styled(FaShoppingCart)`
-    color:#fff;
+    color: ${ (props) => props.color ? `${props.color}` : '#b5b5b5' };
 `;
 
 const FavIconSelected = styled(FaHeart)`
-    color:#fff;
+    color: ${ (props) => props.color ? `${props.color}` : '#b5b5b5' };
 `;
 
 const HomeIcon = styled(FaHome)`
-    color:#fff;
+    color: ${ (props) => props.color ? `${props.color}` : '#b5b5b5' };
 `;
 
 const ColorOptions = styled.span`
@@ -20,16 +20,16 @@ const ColorOptions = styled.span`
     border-radius: 50%;
     margin: .2rem .4rem;
     vertical-align: middle;
-    background-color: ${ (props) => props.color ? props.color : '#fff' }
+    background-color: ${ (props) => props.color ? props.color : '#b5b5b5' }
 `;
 
 const AddFavorite = styled.button`
     display: inline-block;
-    color: ${ (props) => props.color ? `${props.color}` : '#fff' };
+    color: ${ (props) => props.color ? `${props.color}` : '#b5b5b5' };
     background-color: #000;
     width: 20rem;
     padding: .5rem 1rem;
-    border: ${ (props) => props.color ? `${props.color}` : '#fff' } 2px solid;
+    border: ${ (props) => props.color ? `${props.color}` : '#b5b5b5' } 2px solid;
     border-radius: .4rem;
     font-size: 2rem;
     font-weight: bold;
@@ -37,7 +37,7 @@ const AddFavorite = styled.button`
     cursor: pointer;
     &:hover{
         background-color: ${ (props) => props.color ? `${props.color}` : '#000' };
-        color: #fff;
+        color: #b5b5b5;
     }
 `;
 

@@ -7,7 +7,7 @@ import { getClothes } from '../../../actions/getClothes';
 
 function Favorites(props){
     
-    useEffect( () => { props.getClothes(); } , [] );
+    useEffect( () => { props.getClothes(); } , [props.favorites] );
     
     return(
         <>

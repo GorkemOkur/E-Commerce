@@ -12,7 +12,7 @@ export const reducer = (state = INITIAL_STATE, action) => {
         case 'Get_Clothes_Start':
             return { ...state, isLoading: true , message: ''};
         case 'Get_Clothes_Success':
-            return { ...state, clothes: action.payload, isLoading: false };
+            return { ...updateState(state), clothes: action.payload, isLoading: false };
         case 'Get_Clothes_Error':
             return { ...state, isLoading: false , message: action.payload };
         case 'Add_Favorites':
@@ -26,7 +26,7 @@ export const reducer = (state = INITIAL_STATE, action) => {
         case 'Delete_Cart_Item':
             return deleteCartItem(state, action.payload);
         default:
-            return state;
+            return updateState(state);
     }
 };
 
@@ -69,4 +69,14 @@ function deleteCartItem(state, id){
     );
     localStorage.setItem('eCommerceCart', JSON.stringify(updatedCart));
     return { ...state, cart: updatedCart };
+}
+
+function updateState(state){
+    let updatedFavorites = state.favorites;
+
+    if( !(state.favorites.toString() === JSON.parse(localStorage.getItem('favorites')).toString()) ){
+        updatedFavorites = JSON.parse(localStorage.getItem('favorites'));
+    }
+
+    return {...state, favorites: updatedFavorites, cart: JSON.parse( localStorage.getItem('eCommerceCart') ) };
 }

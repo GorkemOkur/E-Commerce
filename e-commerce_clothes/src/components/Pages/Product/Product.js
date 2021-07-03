@@ -2,10 +2,11 @@ import './Product.css';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { addCart } from '../../../actions/AddCart';
 import { getClothes } from '../../../actions/getClothes';
 import { addFavorites } from '../../../actions/AddFavorites';
-import { addCart } from '../../../actions/AddCart';
 import { ColorOptions , FavIconSelected, AddFavorite , AddCart, CartIcon } from '../../StyledLinks/StyledLinks';
+
 
 function Product(props){
 
@@ -30,7 +31,7 @@ function Product(props){
                                 <section>
                                     <header>
                                         {product.name}
-                                        {props.favorites.includes(product.id) ? <FavIconSelected/> : null }
+                                        {props.favorites.includes(product.id) ? <FavIconSelected color={product.color} /> : null }
                                         {/*Object.keys(props.cart).includes(product.id) ? <CartIcon/> :null*/}
                                     </header>
                                     <figure><img src={product.image} alt={product.name}/></figure>
