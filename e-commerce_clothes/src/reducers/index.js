@@ -23,6 +23,8 @@ export const reducer = (state = INITIAL_STATE, action) => {
             return incrementCartItem(state, action.payload);
         case 'Decrement_Cart_Item':
             return decrementCartItem(state, action.payload);
+        case 'Delete_Cart_Item':
+            return deleteCartItem(state, action.payload);
         default:
             return state;
     }
@@ -48,14 +50,23 @@ function addCart(state, id){
 
 function incrementCartItem(state, id){
     state.cart[id] = state.cart[id] + 1;
-
+    localStorage.setItem('eCommerceCart', JSON.stringify(state.cart));
     return { ...state, cart: {...state.cart} };
 }
 
 function decrementCartItem(state, id){
     if(state.cart[id] !== 1 ){
         state.cart[id] = state.cart[id] - 1;
+        localStorage.setItem('eCommerceCart', JSON.stringify(state.cart));
         return { ...state, cart: {...state.cart} };
     }
     return state;
+}
+
+function deleteCartItem(state, id){
+    const updatedCart = Object.fromEntries(
+        Object.entries(state.cart).filter( ([key,val],i) => parseInt(key) !== parseInt(id) )
+    );
+    localStorage.setItem('eCommerceCart', JSON.stringify(updatedCart));
+    return { ...state, cart: updatedCart };
 }

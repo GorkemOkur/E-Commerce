@@ -5,13 +5,11 @@ import { useParams } from 'react-router-dom';
 import { getClothes } from '../../../actions/getClothes';
 import { addFavorites } from '../../../actions/AddFavorites';
 import { addCart } from '../../../actions/AddCart';
-import { ColorOptions , FavIconSelected, AddFavorite , AddCart } from '../../StyledLinks/StyledLinks';
+import { ColorOptions , FavIconSelected, AddFavorite , AddCart, CartIcon } from '../../StyledLinks/StyledLinks';
 
 function Product(props){
 
     const productID = useParams().id;
-
-    console.log('productID: ',productID);
 
     useEffect( () => { 
         props.getClothes();
@@ -30,7 +28,11 @@ function Product(props){
                         product && (<div className="productWrapper">
                             <main>
                                 <section>
-                                    <header>{product.name} {props.favorites.includes(product.id) ? <FavIconSelected/> : null }</header>
+                                    <header>
+                                        {product.name}
+                                        {props.favorites.includes(product.id) ? <FavIconSelected/> : null }
+                                        {/*Object.keys(props.cart).includes(product.id) ? <CartIcon/> :null*/}
+                                    </header>
                                     <figure><img src={product.image} alt={product.name}/></figure>
                                 </section>
                                 <section className="prtrs">

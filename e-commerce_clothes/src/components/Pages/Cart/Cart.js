@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getClothes } from '../../../actions/getClothes';
 import { incrementCartItem as increment } from '../../../actions/incrementCartItem';
 import { decrementCartItem as decrement} from '../../../actions/decrementCartItem';
+import { deleteCartItem as deleteItem} from '../../../actions/deleteCartItem';
 
 function Cart(props){
 
@@ -16,9 +17,7 @@ function Cart(props){
     if(props.clothes)
         props.clothes.map( c=> {
             if(cartIDs.includes(c.id)){
-                console.log("Type of Price before: ", price);
                 price += Number(c.price * props.cart[c.id]);
-                console.log("Type of Price after: ", price);
             }
         });
 
@@ -33,8 +32,16 @@ function Cart(props){
                             props.clothes.map( c => (
                                 cartIDs.includes(c.id) ? 
                                 <li key={c.id} className="CartItem">
-                                    <p>{c.name}</p>
-                                    <p> <span onClick={ (e) => props.decrement(c.id) } >-</span> <span onClick={ (e) => props.increment(c.id) }>+</span> </p>
+                                    <p><img src={c.image} alt={c.name} /><span>{c.name}</span></p>
+                                    <p>
+                                        {props.cart[c.id] === 1 ?
+                                            <span onClick={ (e) => props.deleteItem(c.id) }>Delete</span>
+                                        :
+                                            <span onClick={ (e) => props.decrement(c.id) }>-</span>
+                                        }
+                                        <span>{props.cart[c.id]}</span>
+                                        <span onClick={ (e) => props.increment(c.id) }>+</span>
+                                    </p>
                                 </li>
                                 : null
                             ))
@@ -45,10 +52,6 @@ function Cart(props){
 
             { 
                 props.isLoading ? null : <p>Total: {price}$</p>
-            }
-
-            {
-                console.log(props.cart)
             }
         </>
     );
@@ -67,6 +70,7 @@ export default connect(
     {
         getClothes,
         increment,
-        decrement
+        decrement,
+        deleteItem
     }
 )(Cart);

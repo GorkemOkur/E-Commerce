@@ -1,6 +1,15 @@
 p{ font-size: 3rem; font-weight: bold; }
 
-.CartWrapper{list-style: none; padding: 0; margin: 0;}
-.CartWrapper .CartItem{display: flex; justify-content: space-between;}
-.CartWrapper .CartItem p{width: 30rem; font-size: 2rem; text-align: left;}
-.CartWrapper .CartItem p span{font-size: 4rem; margin: 0 2rem; cursor:pointer;}
+.CartWrapper{list-style: none; max-width: 1170px; padding: 0; margin: 3rem auto 0 auto;}
+.CartWrapper .CartItem{display: flex; justify-content: space-between; align-items: baseline; margin: 1rem 0 3rem 0;}
+.CartWrapper .CartItem p{width: 50rem; font-size: 2.5rem; height: 6rem; text-align: left; margin: 0;}
+.CartWrapper .CartItem p img{
+    height: 100%;
+    margin: 0 2rem 0 0;
+    vertical-align: middle;
+}
+.CartWrapper .CartItem p:nth-child(1) span{ vertical-align: middle; }
+.CartWrapper .CartItem p:nth-child(2){ text-align: right; }
+.CartWrapper .CartItem p span{ vertical-align: middle; }
+.CartWrapper .CartItem p:nth-child(2) span{font-size: 3rem; margin: 0; cursor:pointer;}
+.CartWrapper .CartItem p:nth-child(2) span:nth-child(even){ margin: 0 2rem; }
